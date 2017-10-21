@@ -11,7 +11,7 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 
 public class NIOClinet_3 {
-	private final static String hostName ="127.0.0.1"; // "www.ifeng.com";
+	private  static String hostName ="127.0.0.1"; // "www.ifeng.com";
 	private final static int port = 8080; //80;
 
 	public static void main(String[] args) {
