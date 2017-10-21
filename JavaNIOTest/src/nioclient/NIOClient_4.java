@@ -22,6 +22,7 @@ public class NIOClient_4 {
 			String strInput;
 			while( (strInput=br_SystemIn.readLine()) != null){
 				System.out.println(strInput);
+				bw.write(strInput+"\r\n");
 				if(strInput.equals("bye")){
 					System.exit(0);
 				}
