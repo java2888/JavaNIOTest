@@ -16,38 +16,39 @@ public class NIOClient_4 {
 		Socket socket = null;
 		try {
 			socket = new Socket(hostName, port);
-			BufferedWriter bw=new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
-			BufferedReader br=new BufferedReader(new InputStreamReader(socket.getInputStream()));
-			BufferedReader br_SystemIn=new BufferedReader(new InputStreamReader(System.in));
+			BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+			BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+			BufferedReader br_SystemIn = new BufferedReader(new InputStreamReader(System.in));
 			String strInput;
-			while( (strInput=br_SystemIn.readLine()) != null){
+			while ((strInput = br_SystemIn.readLine()) != null) {
 				System.out.println(strInput);
 				bw.write(strInput+"\r\n");
-				if(strInput.equals("bye")){
+				bw.flush();
+				if (strInput.equals("bye")) {
 					System.exit(0);
 				}
 			}
-/*			for(int i=0; i<5; i++){
-				bw.write("From client: "+ i + " \r\n");
-				bw.flush();
-			}*/
+			/*
+			 * for(int i=0; i<5; i++){ bw.write("From client: "+ i + " \r\n");
+			 * bw.flush(); }
+			 */
 			String str;
-			 
-			while( (str=br.readLine())!=null ){
+
+			while ((str = br.readLine()) != null) {
 				System.out.println(str);
-				if(str.equals("bye")){
+				if (str.equals("bye")) {
 					break;
 				}
 			}
-			
+
 		} catch (UnknownHostException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}finally{
-			if(socket!=null && !socket.isClosed()){
+		} finally {
+			if (socket != null && !socket.isClosed()) {
 				try {
 					socket.close();
 				} catch (IOException e) {
