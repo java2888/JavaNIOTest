@@ -12,6 +12,7 @@ public class NIOClient_4 {
 	private static String hostName = "127.0.0.1";
 	private static int port = 8080;
 
+	
 	public static void main(String[] args) {
 		Socket socket = null;
 		try {
@@ -24,7 +25,7 @@ public class NIOClient_4 {
 				System.out.println(strInput);
 				bw.write(strInput+"\r\n");
 				bw.flush();
-				if (strInput.equals("bye")) {
+				if (strInput.equalsIgnoreCase("bye")) {
 					System.exit(0);
 				}
 			}
